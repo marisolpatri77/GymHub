@@ -1,0 +1,660 @@
+/* Estilos específicos para la página de entrenadores */
+
+/* Hero de página */
+  .page-hero {
+    height: 70vh; 
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  }
+  
+  .page-hero .hero-background img {
+    filter: brightness(0.7);
+  }
+  
+  .hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .hero-content h1 span {
+    color: var(--accent);
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    color: var(--white);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Secciones de entrenadores */
+  .trainers-section {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .alt-bg {
+    background-color: var(--secondary-bg);
+  }
+  
+  /* Grid de entrenadores */
+  .trainers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+  }
+  
+  /* Tarjetas de entrenadores con efecto flip */
+  .trainer-card {
+    perspective: 1500px;
+    height: 500px;
+  }
+  
+  .trainer-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .trainer-card:hover .trainer-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .trainer-card-front,
+  .trainer-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  
+  .trainer-card-front {
+    background-color: var(--card-bg);
+  }
+  
+  .light-mode .trainer-card-front {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .trainer-image {
+    height: 75%;
+    overflow: hidden;
+  }
+  
+  .trainer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .trainer-card:hover .trainer-image img {
+    transform: scale(1.05);
+  }
+  
+  .trainer-info {
+    padding: var(--spacing-md);
+    text-align: center;
+  }
+  
+  .trainer-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+  }
+  
+  .trainer-info p {
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  /* Sistema de rating con estrellas */
+  .trainer-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .stars {
+    display: flex;
+  }
+  
+  .star {
+    color: #ccc;
+    font-size: 1rem;
+    margin: 0 1px;
+  }
+  
+  .star.active {
+    color: var(--accent);
+    font-size: 1rem;
+    margin: 0 1px;
+    animation: star-pulse 1.5s infinite alternate;
+  }
+  
+  .star.half {
+    color: var(--accent);
+    animation: star-pulse 1.5s infinite alternate;
+    animation-delay: 0.2s;
+  }
+  
+  @keyframes star-pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.2);
+    }
+  }
+  
+  .rating-text {
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  
+  /* Parte trasera de la tarjeta */
+  .trainer-card-back {
+    background: linear-gradient(135deg, var(--card-bg) 0%, #1a1a1a 100%);
+    transform: rotateY(180deg);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .light-mode .trainer-card-back {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    border: 1px solid #d0d0d0;
+  }
+  
+  .trainer-card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--accent);
+  }
+  
+  .trainer-card-back p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  /* Barras de habilidades animadas */
+  .skills {
+    margin-bottom: 20px;
+  }
+  
+  .skill {
+    margin-bottom: 15px;
+  }
+  
+  .skill-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .skill-bar {
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .light-mode .skill-bar {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .skill-level {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent) 0%, #ffc107 100%);
+    border-radius: 5px;
+    position: relative;
+    width: 0; 
+    visibility: hidden; 
+  }
+  
+  /* Cuando la tarjeta se voltea, hacemos visible la barra y aplicamos la animación */
+  .trainer-card:hover .skill-level {
+    visibility: visible;
+    animation: skill-fill 1.5s ease-out forwards;
+  }
+  
+  .skill-level::after {
+    content: attr(data-level);
+    position: absolute;
+    right: 0;
+    top: -25px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  
+  /* Animación para las barras de habilidades */
+  @keyframes skill-fill {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: var(--skill-width);
+    }
+  }
+  
+  /* Establecemos variables CSS personalizadas para cada nivel de habilidad */
+  .skill-level[style*="width: 95%"] {
+    --skill-width: 95%;
+  }
+  
+  .skill-level[style*="width: 90%"] {
+    --skill-width: 90%;
+  }
+  
+  .skill-level[style*="width: 85%"] {
+    --skill-width: 85%;
+  }
+  
+  .skill-level[style*="width: 80%"] {
+    --skill-width: 80%;
+  }
+  
+  .skill-level[style*="width: 98%"] {
+    --skill-width: 98%;
+  }
+  
+  .skill-level[style*="width: 92%"] {
+    --skill-width: 92%;
+  }
+  
+  .skill-level[style*="width: 100%"] {
+    --skill-width: 100%;
+  }
+  
+  /* Redes sociales */
+  .trainer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .trainer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white);
+    transition: all var(--transition-fast);
+  }
+  
+  .light-mode .trainer-social a {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--black);
+  }
+  
+  .trainer-social a:hover {
+    background-color: var(--accent);
+    color: var(--black);
+    transform: translateY(-3px);
+  }
+  
+  /* Botón en la tarjeta */
+  .trainer-card-back .btn {
+    align-self: center;
+  }
+  
+  .trainer-card-back .btn-outline {
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: all var(--transition-fast);
+  }
+  
+  .trainer-card-back .btn-outline:hover {
+    background-color: var(--accent);
+    color: var(--black);
+    transform: translateY(-3px);
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .trainers-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  
+    .trainer-card {
+      height: 480px;
+    }
+  
+    .hero-content h1 {
+      font-size: 3rem;
+    }
+
+
+    .trainer-card-back {
+      padding: var(--spacing-sm); 
+    }
+
+    .trainer-card-back h3 {
+      font-size: 1.4rem; 
+      margin-bottom: 8px; 
+    }
+
+    .trainer-card-back p {
+      font-size: 0.95rem; 
+      margin-bottom: 15px; 
+      line-height: 1.5; 
+    }
+
+    .skills {
+      margin-bottom: 15px; 
+    }
+
+    .skill {
+      margin-bottom: 10px; 
+    }
+
+    .skill-name {
+      font-size: 0.9rem; 
+    }
+
+    .skill-bar {
+      height: 8px; 
+    }
+
+    .skill-level::after {
+      font-size: 0.75rem; 
+      top: -20px; 
+    }
+
+    .trainer-social {
+      gap: 12px; 
+      margin-bottom: 15px; 
+    }
+
+    .trainer-social a {
+      width: 36px; 
+      height: 36px; 
+      font-size: 0.9rem; 
+    }
+
+    .trainer-card-back .btn-outline {
+      padding: 8px 18px; 
+      font-size: 0.9rem; 
+    }
+
+  }
+  
+  @media (max-width: 768px) {
+    .page-hero {
+      height: 50vh;
+    }
+  
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+  
+    .trainers-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .trainer-card {
+      height: 450px;
+    }
+  
+    .trainer-image {
+      height: 70%;
+    }
+
+
+    .trainer-card-back {
+      padding: 12px; 
+    }
+
+    .trainer-card-back h3 {
+      font-size: 1.3rem; 
+      margin-bottom: 6px;
+    }
+
+    .trainer-card-back p {
+      font-size: 0.9rem; 
+      margin-bottom: 12px; 
+      line-height: 1.4; 
+    }
+
+    .skills {
+      margin-bottom: 12px; 
+    }
+
+    .skill {
+      margin-bottom: 8px; 
+    }
+
+    .skill-name {
+      font-size: 0.85rem; 
+    }
+
+    .skill-bar {
+      height: 7px; 
+    }
+
+    .skill-level::after {
+      font-size: 0.7rem; 
+      top: -18px; 
+    }
+
+    .trainer-social {
+      gap: 10px; 
+      margin-bottom: 12px; 
+    }
+
+    .trainer-social a {
+      width: 32px; 
+      height: 32px; 
+      font-size: 0.85rem;
+    }
+
+    .trainer-card-back .btn-outline {
+      padding: 7px 16px; 
+      font-size: 0.85rem; 
+    }
+
+  }
+  
+  @media (max-width: 576px) {
+    .page-hero {
+      height: 40vh;
+    }
+  
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-content p {
+      font-size: 1rem;
+    }
+  
+    .trainer-card {
+      height: 420px;
+    }
+  
+    .trainer-info h3 {
+      font-size: 1.2rem;
+    }
+
+    .trainer-card-back {
+      padding: 10px; 
+    }
+
+    .trainer-card-back h3 {
+      font-size: 1.2rem; 
+      margin-bottom: 5px; 
+    }
+
+    .trainer-card-back p {
+      font-size: 0.85rem; 
+      margin-bottom: 10px; 
+      line-height: 1.3; 
+    }
+
+    .skills {
+      margin-bottom: 10px; 
+    }
+
+    .skill {
+      margin-bottom: 6px; 
+    }
+
+    .skill-name {
+      font-size: 0.8rem; 
+    }
+
+    .skill-bar {
+      height: 6px; 
+    }
+
+    .skill-level::after {
+      font-size: 0.65rem; 
+      top: -16px; 
+    }
+
+    .trainer-social {
+      gap: 8px; 
+      margin-bottom: 10px; 
+    }
+
+    .trainer-social a {
+      width: 28px; 
+      height: 28px; 
+      font-size: 0.8rem; 
+    }
+
+    .trainer-card-back .btn-outline {
+      padding: 6px 14px; 
+      font-size: 0.8rem; 
+    }
+
+
+
+  }
+  
+  /* Animaciones adicionales para mejorar la interactividad */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .trainer-card:hover {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Accesibilidad */
+  .trainer-card:focus-within .trainer-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Modo claro */
+  .light-mode .trainer-card-back p {
+    color: #333;
+  }
+  
+  .light-mode .skill-level::after {
+    color: #333;
+  }
+  
+  /* Animación para las estrellas de rating */
+  @keyframes star-shine {
+    0% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+  
+  .star.active i,
+  .star.half i {
+    animation: star-shine 2s infinite;
+  }
+  
+  .star.active:nth-child(1) i {
+    animation-delay: 0s;
+  }
+  .star.active:nth-child(2) i {
+    animation-delay: 0.2s;
+  }
+  .star.active:nth-child(3) i {
+    animation-delay: 0.4s;
+  }
+  .star.active:nth-child(4) i {
+    animation-delay: 0.6s;
+  }
+  .star.active:nth-child(5) i {
+    animation-delay: 0.8s;
+  }
+
+/* Aseguramos que la animación se reinicie cada vez que el usuario pasa el cursor sobre la tarjeta */
+@media (hover: hover) {
+  .trainer-card {
+    overflow: hidden;
+  }
+  
+  .trainer-card:hover .skill-level {
+    animation-name: skill-fill;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+  }
+  
+  .trainer-card:not(:hover) .skill-level {
+    width: 0;
+    visibility: hidden;
+    transition: width 0s, visibility 0s;
+  }
+}
+
+/* Para dispositivos táctiles */
+@media (hover: none) {
+  .trainer-card-inner:active .skill-level {
+    visibility: visible;
+    animation: skill-fill 1.5s ease-out forwards;
+  }
+}
